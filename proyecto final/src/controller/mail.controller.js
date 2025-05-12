@@ -3,7 +3,7 @@ const Email = require('../models/email');
 
 let emails = [];
 
-const POSTMARK_API_KEY = "85b2ef19-f0f2-4525-b8d7-ca63fcce3742";
+const POSTMARK_API_KEY = "4da0ff58-d552-46d3-a8f1-bfa99e9aedbe";
 const POSTMARK_API_URL = 'https://api.postmarkapp.com/email';
 
 const postmarkHeaders = {
@@ -37,11 +37,11 @@ function destino(req, res) {
 
 function mensaje(req, res) {
     const {from, to, subject, message} = req.body;
-    if(!from || !to || !subject || !message) {
+    if(!from || !to || !subject ||!message) {
         return res.status(400).json({error: "falta introducir alguno de los campos 'from', 'to', 'subject' o 'message'"});
     }
         const postmarkEmail = {
-                                 From: from,
+                                 From: from ,
                                  To: to,
                                  Subject: subject,
                                  TextBody: message
