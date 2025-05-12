@@ -1,5 +1,4 @@
 const { request } = require("http");
-const { response } = require("../app");
 const Book = require("../models/books")
 
 let books = [
@@ -28,8 +27,7 @@ function getBookQuery(request, response) {
     let respuesta;
 
     if (books.length > 0 && (!id || books.some(book => book.id_book == id))) {
-        // Si no se proporciona ID, devolver todos los libros
-        // Si se proporciona ID, devolver el libro específico
+ 
         const data = id ? books.find(book => book.id_book == id) : books;
         respuesta = {error: false, codigo: 200, mensaje: data};
     } else {
@@ -42,7 +40,6 @@ function getBookById(request, response) {
     let id = request.params.id;
     let respuesta;
     
-    // Buscar el libro en el array
     let libroEncontrado = books.find(book => book.id_book == id);
 
     if (libroEncontrado != null) {
